@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on darwin)" generated="2024-06-24T13:49:28.588713" rpa="false" schemaversion="5">
+<suite id="s1" name="Post template Exercicio" source="/Users/djalmamelos/Documents/PESSOAL/VN2425/MpTI/CursoUdemyAutomacao/RobotFramework/Avançado/API_post_template_14042021/Post_template Exercicio.robot">
+<test id="s1-t1" name="Exemplo: Postando com body template" line="14">
+<kw name="Conectar com autenticação por token na API do GitHub">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-06-24T13:49:28.673677" level="INFO">${HEADERS} = {'Authorization': 'Bearer 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'}</msg>
+<var>${HEADERS}</var>
+<arg>Authorization=Bearer ${MY_GITHUB_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-06-24T13:49:28.673540" elapsed="0.000150"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-06-24T13:49:28.674102" level="INFO">Creating Session using : alias=mygithubAuth, url=https://api.github.com, headers={'Authorization': 'Bearer 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'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias=mygithubAuth</arg>
+<arg>url=${GITHUB_HOST}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>disable_warnings=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-06-24T13:49:28.673745" elapsed="0.000469"/>
+</kw>
+<status status="PASS" start="2024-06-24T13:49:28.673200" elapsed="0.001052"/>
+</kw>
+<kw name="Postar uma nova issue com label &quot;robot framework&quot;" source_name="Postar uma nova issue com label &quot;${LABEL}&quot;">
+<kw name="Format String" owner="String">
+<msg time="2024-06-24T13:49:28.674534" level="INFO" html="true">Reading template from file &lt;a href="/Users/djalmamelos/Documents/PESSOAL/VN2425/MpTI/CursoUdemyAutomacao/RobotFramework/Avançado/API_post_template_14042021/data/input/post_issue.json"&gt;/Users/djalmamelos/Documents/PESSOAL/VN2425/MpTI/CursoUdemyAutomacao/RobotFramework/Avançado/API_post_template_14042021/data/input/post_issue.json&lt;/a&gt;.</msg>
+<msg time="2024-06-24T13:49:28.674739" level="INFO">${BODY} = {
+
+    "title": "Exercício feito por [djalmamelos]",
+    "body": "Comentário cadastrado via Robot Framework!",
+    "assignees": [
+        "djalmamelos"
+    ],
+    "labels": [
+        "robot framework"...</msg>
+<var>${BODY}</var>
+<arg>/Users/djalmamelos/Documents/PESSOAL/VN2425/MpTI/CursoUdemyAutomacao/RobotFramework/Avançado/API_post_template_14042021/data/input/post_issue.json</arg>
+<arg>user_git=${MY_GITHUB_USER}</arg>
+<arg>label=${LABEL}</arg>
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<status status="PASS" start="2024-06-24T13:49:28.674455" elapsed="0.000298"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-06-24T13:49:28.674869" level="INFO">Meu Body ficou:
+{
+
+    "title": "Exercício feito por [djalmamelos]",
+    "body": "Comentário cadastrado via Robot Framework!",
+    "assignees": [
+        "djalmamelos"
+    ],
+    "labels": [
+        "robot framework"
+    ]
+    
+}
+
+</msg>
+<arg>Meu Body ficou:\n${BODY}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-06-24T13:49:28.674805" elapsed="0.000079"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-06-24T13:49:29.160915" level="INFO">POST Request : url=https://api.github.com/repos/mayribeirofernandes/myudemyrobotframeworkcourse/issues/12/ 
+ path_url=/repos/mayribeirofernandes/myudemyrobotframeworkcourse/issues/12/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer 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', 'Content-Length': '217'} 
+ body={
+
+    "title": "Exercício feito por [djalmamelos]",
+    "body": "Comentário cadastrado via Robot Framework!",
+    "assignees": [
+        "djalmamelos"
+    ],
+    "labels": [
+        "robot framework"
+    ]
+    
+}
+
+ 
+ </msg>
+<msg time="2024-06-24T13:49:29.161125" level="INFO">POST Response : url=https://api.github.com/repos/mayribeirofernandes/myudemyrobotframeworkcourse/issues/12/ 
+ status=404, reason=Not Found 
+ headers={'Server': 'GitHub.com', 'Date': 'Mon, 24 Jun 2024 16:49:28 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'X-OAuth-Scopes': 'admin:enterprise, admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook, admin:ssh_signing_key, codespace, copilot, delete:packages, delete_repo, gist, notifications, project, repo, user, workflow, write:discussion, write:packages', 'X-Accepted-OAuth-Scopes': 'repo', 'github-authentication-token-expiration': '2024-07-24 15:33:49 UTC', 'X-GitHub-Media-Type': 'github.v3; format=json', 'x-github-api-version-selected': '2022-11-28', 'X-RateLimit-Limit': '5000', 'X-RateLimit-Remaining': '4999', 'X-RateLimit-Reset': '1719251368', 'X-RateLimit-Used': '1', 'X-RateLimit-Resource': 'core', 'Access-Control-Expose-Headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 'X-Frame-Options': 'deny', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Referrer-Policy': 'origin-when-cross-origin, strict-origin-when-cross-origin', 'Content-Security-Policy': "default-src 'none'", 'Vary': 'Accept-Encoding, Accept, X-Requested-With', 'Content-Encoding': 'gzip', 'X-GitHub-Request-Id': '1CCA:C64A3:8E97EE9:907CA53:6679A398'} 
+ body={"message":"Not Found","documentation_url":"https://docs.github.com/rest","status":"404"} 
+ </msg>
+<msg time="2024-06-24T13:49:29.161405" level="FAIL">HTTPError: 404 Client Error: Not Found for url: https://api.github.com/repos/mayribeirofernandes/myudemyrobotframeworkcourse/issues/12/</msg>
+<var>${RESPONSE}</var>
+<arg>alias=mygithubAuth</arg>
+<arg>url=${ISSUES_URI}</arg>
+<arg>data=${BODY}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2024-06-24T13:49:28.674923" elapsed="0.492868">HTTPError: 404 Client Error: Not Found for url: https://api.github.com/repos/mayribeirofernandes/myudemyrobotframeworkcourse/issues/12/</status>
+</kw>
+<kw name="Confere sucesso na requisição">
+<arg>${RESPONSE}</arg>
+<status status="NOT RUN" start="2024-06-24T13:49:29.168301" elapsed="0.000052"/>
+</kw>
+<status status="FAIL" start="2024-06-24T13:49:28.674343" elapsed="0.494193">HTTPError: 404 Client Error: Not Found for url: https://api.github.com/repos/mayribeirofernandes/myudemyrobotframeworkcourse/issues/12/</status>
+</kw>
+<status status="FAIL" start="2024-06-24T13:49:28.672974" elapsed="0.496084">HTTPError: 404 Client Error: Not Found for url: https://api.github.com/repos/mayribeirofernandes/myudemyrobotframeworkcourse/issues/12/</status>
+</test>
+<doc>Exemplos da própria Library: https://github.com/bulkan/robotframework-requests/blob/master/tests/testcase.robot
+Doc da API do GitHub: https://developer.github.com/v3/</doc>
+<status status="FAIL" start="2024-06-24T13:49:28.589224" elapsed="0.580809"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Post template Exercicio">Post template Exercicio</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,11 @@
+{{
+
+    "title": "Issue Comment",
+    "body": "Comentário cadastrado via Robot Framework!",
+    "assignees": [
+        "{user_git}"
+    ]
+    
+    
+}}
+
