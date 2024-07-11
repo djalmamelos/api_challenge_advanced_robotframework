@@ -21,10 +21,10 @@ Este projeto foi criado para demonstrar habilidades avançadas em automação de
 
 Antes de começar, você vai precisar ter o seguinte instalado em sua máquina:
 
-- Python 3.x
-- RobotFramework
-- RequestsLibrary para RobotFramework
-
+- [Python 3.x](https://www.python.org/downloads/)
+- [RobotFramework](https://robotframework.org/?tab=1#getting-started) na sessão de Install tem o código para usar no terminal do seu computador
+- [RequestsLibrary para RobotFramework](https://github.com/MarketSquare/robotframework-requests#readme) 
+0
 ## Estrutura do Projeto 📁
 
 ```plaintext
